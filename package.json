@@ -3,19 +3,23 @@
       "version": "1.0.0",
       "description": "",
       "scripts": {
-          "build": "node index.js",
-          "test": "echo \"No test specified\" && exit 1",
-          "start": "node index.js"
+            "build": "npm install express && npm install mongoose && npm install dotenv && node index.js",
+            "test": "echo \"No test specified\" && exit 1",
+            "start": "node index.js"
       },
       "repository": {
-          "type": "git",
-          "url": "git+https://github.com/Adanhussain/MEAN-test.git"
+            "type": "git",
+            "url": "git+https://github.com/Adanhussain/MEAN-test.git"
       },
       "author": "",
       "license": "ISC",
       "bugs": {
-          "url": "https://github.com/Adanhussain/MEAN-test/issues"
+            "url": "https://github.com/Adanhussain/MEAN-test/issues"
       },
-      "homepage": "https://github.com/Adanhussain/MEAN-test#readme"
-  }
-  
+      "homepage": "https://github.com/Adanhussain/MEAN-test#readme",
+      "dependencies": {
+            "dotenv": "^16.0.3",
+            "express": "^4.18.2",
+            "mongoose": "^6.10.0"
+      }
+}
