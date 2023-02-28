@@ -1,21 +1,21 @@
 const express=require('express')
 const router=express.Router()
-const Post=require('../Models/post')
+const Register=require('../Models/register')
 
 router.get('/',async(req,resp)=>{
    try{
-    const GetAllPost= await Post.find();
+    const GetAllRegister= await Register.find();
     resp.status(200);
-    resp.json(GetAllPost)
+    resp.json(GetAllRegister)
    }
    catch(err){
     resp.status(500);
     resp.json({message:err})
    }
 })
-router.delete('/:postId',async (req,resp)=>{
+router.delete('/:registerId',async (req,resp)=>{
   try{
-    const deletedPost= await Post.deleteOne({_id:req.params.postId});
+    const deletedPost= await Register.deleteOne({_id:req.params.registerId});
     resp.status(200);
     resp.json(deletedPost)
    }
@@ -26,13 +26,10 @@ router.delete('/:postId',async (req,resp)=>{
 })
 router.post('/',async (req,resp)=>{
     try {
-    const newpost = new Post({
-      Blog_Content:req.body.Blog_Content,
-      blog_title:req.body.blog_title,
-      category:req.body.category,
+    const newpost = new Register({
       email:req.body.email,
-      image:req.body.image,
-      name:req.body.name,
+      password:req.body.password,
+      your_name:req.body.your_name,
 
     });
 
@@ -45,9 +42,9 @@ router.post('/',async (req,resp)=>{
     resp.status(500).json(err);
   }
 })
-router.get('/:postId',async (req,resp)=>{
+router.get('/:registerId',async (req,resp)=>{
   try{
-    const GetSinglePost= await Post.findById(req.params.postId);
+    const GetSinglePost= await Register.findById(req.params.registerId);
     resp.status(200);
     resp.json(GetSinglePost)
    }
@@ -56,18 +53,15 @@ router.get('/:postId',async (req,resp)=>{
     resp.json({message:err})
    }
 })
-router.patch('/:postId',async (req,resp)=>{
+router.patch('/:registerId',async (req,resp)=>{
   try{
-    const updatePost= await Post.updateOne(
-      {_id:req.params.postId},
+    const updatePost= await Register.updateOne(
+      {_id:req.params.registerId},
       {
         $set:{
-          Blog_Content:req.body.Blog_Content,
-      blog_title:req.body.blog_title,
-      category:req.body.category,
-      email:req.body.email,
-      image:req.body.image,
-      name:req.body.name,
+            email:req.body.email,
+            password:req.body.password,
+            your_name:req.body.your_name,
         }
       });
     resp.status(200);

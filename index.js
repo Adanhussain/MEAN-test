@@ -3,6 +3,7 @@ const app=express();
 const mongoose=require('mongoose')
 require('dotenv/config')
 const postRoutes=require('./Routes/posts')
+const registerRoutes=require('./Routes/registration')
 const bodyParser=require('body-parser')
 
 
@@ -11,6 +12,7 @@ app.use(bodyParser.json())
 
 //import the routes
 app.use('/posts',postRoutes)
+app.use('/register',registerRoutes)
 app.listen(8080)
 
 
