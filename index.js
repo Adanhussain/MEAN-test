@@ -4,6 +4,7 @@ const mongoose=require('mongoose')
 require('dotenv/config')
 const postRoutes=require('./Routes/posts')
 const registerRoutes=require('./Routes/registration')
+const contactRoutes=require('./Routes/contactUs')
 const bodyParser=require('body-parser')
 
 
@@ -13,6 +14,7 @@ app.use(bodyParser.json())
 //import the routes
 app.use('/posts',postRoutes)
 app.use('/register',registerRoutes)
+app.use('/contact',contactRoutes)
 app.listen(8080)
 
 
